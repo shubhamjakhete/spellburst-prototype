@@ -170,7 +170,40 @@ header.masthead {
   max-width: 52ch;
 }
 
+pre.code {
+  margin: 0;
+  max-height: 340px;
+  overflow: auto;
+  white-space: pre;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 12px 14px;
+}
+
 /* ---- controls ---- */
+
+.field {
+  width: 100%;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  background: #fff;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--ink);
+}
+
+.field::placeholder {
+  color: #9aa096;
+}
+
+.field:disabled {
+  opacity: 0.6;
+}
 
 .row {
   display: flex;
