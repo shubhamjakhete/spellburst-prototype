@@ -264,6 +264,61 @@ header.masthead {
   color: var(--broke);
 }
 
+.basecheck {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.basecheck:first-child {
+  border-top: 0;
+}
+
+.basecheck img,
+.basecheck .thumb-missing {
+  width: 84px;
+  height: 56px;
+  flex: none;
+  border-radius: 2px;
+  background: var(--stage);
+  object-fit: cover;
+}
+
+.basecheck-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.basecheck .name {
+  display: block;
+  font-size: 14px;
+}
+
+.basecheck .num {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--soft);
+  margin-top: 2px;
+}
+
+.basecheck .call {
+  font-size: 11.5px;
+  font-weight: 600;
+  flex: none;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.basecheck .call.ok {
+  color: var(--held);
+}
+
+.basecheck .call.bad {
+  color: var(--broke);
+}
+
 /* ---- failure ---- */
 
 .failure {
