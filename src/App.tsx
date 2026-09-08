@@ -4,6 +4,7 @@ import ErrorPanel from './components/ErrorPanel'
 import PromptInput from './components/PromptInput'
 import RefinementInput from './components/RefinementInput'
 import SketchPreview from './components/SketchPreview'
+import VerifyBadge from './components/VerifyBadge'
 import Checks from './dev/Checks'
 import {
   ApiError,
@@ -16,6 +17,7 @@ import {
 } from './lib/api'
 import { readSketch, type Reading } from './lib/measure'
 import { SketchError } from './lib/sketch'
+import { verify } from './lib/verify'
 
 const STEPS = [
   'Describe it',
@@ -56,6 +58,7 @@ export default function App() {
   const [refinement, setRefinement] = useState('')
 
   const [current, setCurrent] = useState<Version | null>(null)
+  const [previous, setPrevious] = useState<Version | null>(null)
   const [request, setRequest] = useState<string | null>(null)
   const [plan, setPlan] = useState<Plan | null>(null)
   const [applied, setApplied] = useState<ApprovedPlan | null>(null)
@@ -67,6 +70,11 @@ export default function App() {
 
   const step = plan ? 2 : applied ? 3 : current ? 1 : 0
 
+  const verdicts =
+    applied && previous
+      ? verify(applied.preserved, previous.reading, current?.reading ?? null)
+      : null
+
   async function generate() {
     setBusy('generating')
     setFailure(null)
@@ -74,6 +82,7 @@ export default function App() {
     setApplied(null)
     setRequest(null)
     setCurrent(null)
+    setPrevious(null)
     try {
       setCurrent(await versionOf(await generateSketch(prompt)))
     } catch (error) {
@@ -104,7 +113,9 @@ export default function App() {
     setFailure(null)
     try {
       const code = await applyModification(current.code, request, approved)
-      setCurrent(await versionOf(code))
+      const next = await versionOf(code)
+      setPrevious(current)
+      setCurrent(next)
       setApplied(approved)
       setPlan(null)
     } catch (error) {
@@ -233,15 +244,36 @@ export default function App() {
                 />
               )}
 
-              {applied && (
+              {applied && verdicts && (
                 <div className="panel">
-                  <h2>Applied</h2>
-                  <p className="aside" style={{ marginTop: 0 }}>
+                  <h2>What held</h2>
+                  <p className="aside" style={{ margin: '0 0 4px' }}>
                     {applied.approvedChanges.length} approved{' '}
-                    {applied.approvedChanges.length === 1 ? 'change' : 'changes'}{' '}
-                    made. {applied.preserved.length} things were asked to stay
-                    as they were.
+                    {applied.approvedChanges.length === 1
+                      ? 'change was'
+                      : 'changes were'}{' '}
+                    made. These are the things you asked to leave alone.
                   </p>
+
+                  <div className="verdicts">
+                    {verdicts.map((verdict) => (
+                      <VerifyBadge key={verdict.property} verdict={verdict} />
+                    ))}
+                  </div>
+
+                  <p className="aside">
+                    Ticking a box asks the model to leave something alone. It
+                    does not force it. Movement and colour can be measured
+                    either side of the change, so those two are checked. The
+                    rest are not, and saying so is more useful than implying
+                    they were.
+                  </p>
+
+                  <div className="row">
+                    <button className="btn" onClick={startOver}>
+                      Change something else
+                    </button>
+                  </div>
                 </div>
               )}
             </>

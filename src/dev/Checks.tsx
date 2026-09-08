@@ -5,6 +5,7 @@ import BaseSketchCheck from './BaseSketchCheck'
 import GenerateCheck from './GenerateCheck'
 import PlanCheck from './PlanCheck'
 import CheckpointCheck from './CheckpointCheck'
+import VerifyCheck from './VerifyCheck'
 
 const CHECKS = [
   { id: 'm1', label: 'M1 · sketch runner' },
@@ -13,13 +14,14 @@ const CHECKS = [
   { id: 'm3', label: 'M3 · generate' },
   { id: 'm4', label: 'M4 · plan' },
   { id: 'm5', label: 'M5 · checkpoint' },
+  { id: 'm7', label: 'M7 · verification' },
 ] as const
 
 type CheckId = (typeof CHECKS)[number]['id']
 
 /** The per-module checks from BUILD.md, reachable at ?dev=1. */
 export default function Checks() {
-  const [shown, setShown] = useState<CheckId>('m5')
+  const [shown, setShown] = useState<CheckId>('m7')
 
   return (
     <>
@@ -42,6 +44,7 @@ export default function Checks() {
       {shown === 'm3' && <GenerateCheck />}
       {shown === 'm4' && <PlanCheck />}
       {shown === 'm5' && <CheckpointCheck />}
+      {shown === 'm7' && <VerifyCheck />}
     </>
   )
 }

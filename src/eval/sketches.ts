@@ -1,4 +1,4 @@
-import type { ColourName } from '../lib/measure'
+import { STILL_MOTION, type ColourName } from '../lib/measure'
 
 /**
  * Six fixed sketches. Frozen so that runs stay comparable, which also makes
@@ -13,8 +13,8 @@ import type { ColourName } from '../lib/measure'
 export type MotionClass = 'still' | 'subtle' | 'lively'
 
 export const MOTION_BANDS: Record<MotionClass, { min: number; max: number }> = {
-  still: { min: 0, max: 0.005 },
-  subtle: { min: 0.005, max: 0.06 },
+  still: { min: 0, max: STILL_MOTION },
+  subtle: { min: STILL_MOTION, max: 0.06 },
   lively: { min: 0.06, max: 1 },
 }
 

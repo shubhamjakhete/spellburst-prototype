@@ -442,6 +442,14 @@ pre.code {
   flex: 1;
 }
 
+.v .name .why {
+  display: block;
+  color: var(--soft);
+  font-size: 12.5px;
+  margin-top: 2px;
+  max-width: 44ch;
+}
+
 .v .num {
   color: var(--soft);
   font-family: 'IBM Plex Mono', monospace;

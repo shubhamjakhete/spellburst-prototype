@@ -19,6 +19,13 @@ const MIN_SATURATION = 0.15
 /** A neutral at or above this brightness is white rather than grey. */
 const WHITE_VALUE = 200
 
+/**
+ * Below this a sketch reads as motionless. Repeat runs of the same sketch
+ * vary by about a thousandth, so two readings underneath this cannot be told
+ * apart and nothing useful can be said by comparing them.
+ */
+export const STILL_MOTION = 0.005
+
 export type ColourName =
   | 'red'
   | 'orange'
@@ -143,12 +150,51 @@ export async function measurePalette(frame: string): Promise<ColourName> {
   )[0][0]
 }
 
+/**
+ * How much the frame varies within itself: the mean absolute deviation of
+ * every channel from the frame's own average, on the same 0 to 1 scale as
+ * motion.
+ *
+ * Motion is a difference between pixel values, so it scales with how much
+ * contrast the artwork has. Recolouring a sketch to lower-contrast colours
+ * lowers its motion reading without anything moving differently. Dividing one
+ * by the other cancels that out.
+ */
+export async function measureContrast(frame: string): Promise<number> {
+  const pixels = await samplePixels(frame)
+  const count = pixels.length / 4
+
+  // Each channel is measured against its own average. Pooling the three would
+  // make a flat background count as contrast whenever its channels differ,
+  // which is most of the time, and that swamps the thing being measured.
+  const means = [0, 0, 0]
+  for (let i = 0; i < pixels.length; i += 4) {
+    means[0] += pixels[i]
+    means[1] += pixels[i + 1]
+    means[2] += pixels[i + 2]
+  }
+  means[0] /= count
+  means[1] /= count
+  means[2] /= count
+
+  let deviation = 0
+  for (let i = 0; i < pixels.length; i += 4) {
+    deviation +=
+      Math.abs(pixels[i] - means[0]) +
+      Math.abs(pixels[i + 1] - means[1]) +
+      Math.abs(pixels[i + 2] - means[2])
+  }
+
+  return deviation / (count * 3) / 255
+}
+
 /** Everything known about one version of a sketch, from one run of it. */
 export type Reading = {
   frameA: string
   frameB: string
   motion: number
   palette: ColourName
+  contrast: number
 }
 
 /**
@@ -158,9 +204,10 @@ export type Reading = {
  */
 export async function readSketch(code: string): Promise<Reading> {
   const { frameA, frameB } = await runSketch(code)
-  const [motion, palette] = await Promise.all([
+  const [motion, palette, contrast] = await Promise.all([
     measureMotion(frameA, frameB),
     measurePalette(frameA),
+    measureContrast(frameA),
   ])
-  return { frameA, frameB, motion, palette }
+  return { frameA, frameB, motion, palette, contrast }
 }

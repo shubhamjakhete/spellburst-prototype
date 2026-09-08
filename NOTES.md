@@ -86,6 +86,68 @@ The eval calls movement drifted at a 25% relative change, so repeat noise is
 roughly an order of magnitude below the threshold it has to clear. Drift the
 eval reports is the model changing the artwork, not the measurement moving.
 
+### A colour change moved the motion reading by a third
+
+Motion is a difference between pixel values, so it scales with how much
+contrast the artwork has. That is not a subtle effect.
+
+Applying "give it a warmer colour" to the drifting particles changed two
+lines and nothing else:
+
+```
+- background(29, 20, 48);   fill(186, 154, 232);
++ background(48, 20, 10);   fill(232, 110, 40);
+```
+
+The drift speed is character-for-character identical. The raw motion
+reading fell from 0.026 to 0.018, a 31% drop, past the 25% threshold. Had
+the artist ticked "keep the drift speed", the interface would have told
+them it changed anyway, and it would have been wrong.
+
+Verification therefore divides motion by the frame's own contrast, measured
+as the mean absolute deviation of each channel from that channel's average.
+Both quantities scale with contrast, so the ratio does not. The same case
+now reads as unchanged, and the deliberate break still reads as +55%.
+
+Two details that cost a round of debugging each. The deviation has to be
+taken per channel: pooling all three makes a flat background count as
+contrast whenever its channels differ, which is nearly always, and that
+swamps the signal. And `measureMotion` itself is left exactly as specified,
+because IT-1 and the eval are calibrated against it. Only the comparison in
+`verify.ts` is contrast-adjusted.
+
+### Fast sketches have no headroom left
+
+The first attempt at the M7 check used the rotating grid, which measures
+0.172 and sits in the lively band. Told to move much faster while holding
+the rotation speed, it measured 0.172 again.
+
+That is not the model refusing. Two frames of an already fast sketch are
+close to unrelated to each other, so the mean difference is near its
+ceiling and speeding it up cannot raise it. Motion saturates.
+
+Nothing in the interface depends on this, but it bounds what the eval can
+claim: a "kept" verdict on a lively sketch is weaker evidence than the same
+verdict on a subtle one, because there was less room for it to fail.
+
+### The checkpoint has more teeth than expected
+
+Asked to "make everything move much faster" with the drift speed on the
+keep list, apply returned the program byte-for-byte unaltered. The system
+prompt tells it that a kept property wins a conflict, and it took that
+literally rather than compromising.
+
+Worth knowing before reading any preservation result: a large part of the
+reason promises hold is that the model is being told, in the same breath,
+that they must. That is the intended design, and it is also the reason the
+"changed anyway" case took several attempts to produce.
+
+The case that does break is subtler and more useful. "Make it chaotic"
+leaves the drift speed untouched and adds noise-driven jitter on top of it,
+so the promise holds word for word while the artwork plainly moves more.
+Measured: +55%, reported as changed anyway. A checker that only caught the
+model contradicting itself in the code would have missed it.
+
 ## Departures from the plan documents
 
 ### Palette buckets by hue, not by RGB distance
