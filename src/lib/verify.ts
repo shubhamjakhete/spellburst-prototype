@@ -90,13 +90,6 @@ function motionShift(before: Reading, after: Reading): number | null {
   return (to - from) / Math.max(from, STILL_MOTION)
 }
 
-/** Rounded first, so a shift of a fraction of a percent does not read "−0%". */
-function asPercentage(shift: number): string {
-  const whole = Math.round(shift * 100)
-  if (whole === 0) return 'unchanged'
-  return `${whole > 0 ? '+' : '−'}${Math.abs(whole)}% movement`
-}
-
 export function verify(
   preserved: PlanItem[],
   before: Reading | null,
@@ -151,10 +144,11 @@ export function verify(
     return {
       ...base,
       call: Math.abs(shift) < DRIFT ? ('kept' as const) : ('changed' as const),
-      // A proportion rather than the two readings, because the comparison is
-      // made on contrast-adjusted numbers that would not match the raw motion
-      // shown under the artwork.
-      detail: asPercentage(shift),
+      // Raw readings, so the numbers match the ones under the artwork. The
+      // call itself is made on contrast-adjusted values, which can disagree
+      // in sign with this pair when a change also alters how contrasty the
+      // frame is.
+      detail: `${before.motion.toFixed(3)} → ${after.motion.toFixed(3)}`,
       because: '',
     }
   })
