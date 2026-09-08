@@ -18,3 +18,16 @@ export function mentionsMovement(text: string): boolean {
 export function mentionsColour(text: string): boolean {
   return COLOUR_WORDS.test(text)
 }
+
+/** What, if anything, we could measure about an item either side of a change. */
+export type Measurable = 'motion' | 'colour' | null
+
+export function measurableAs(item: {
+  property: string
+  description: string
+}): Measurable {
+  const text = `${item.property} ${item.description}`
+  if (mentionsMovement(text)) return 'motion'
+  if (mentionsColour(text)) return 'colour'
+  return null
+}

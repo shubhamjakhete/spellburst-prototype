@@ -4,6 +4,7 @@ import MeasureCheck from './dev/MeasureCheck'
 import BaseSketchCheck from './dev/BaseSketchCheck'
 import GenerateCheck from './dev/GenerateCheck'
 import PlanCheck from './dev/PlanCheck'
+import CheckpointCheck from './dev/CheckpointCheck'
 
 type Ping = {
   ok: boolean
@@ -16,13 +17,14 @@ const CHECKS = [
   { id: 'it1', label: 'IT-1 · base sketches' },
   { id: 'm3', label: 'M3 · generate' },
   { id: 'm4', label: 'M4 · plan' },
+  { id: 'm5', label: 'M5 · checkpoint' },
 ] as const
 
 type CheckId = (typeof CHECKS)[number]['id']
 
 export default function App() {
   const [ping, setPing] = useState<Ping | null>(null)
-  const [shown, setShown] = useState<CheckId>('m4')
+  const [shown, setShown] = useState<CheckId>('m5')
 
   useEffect(() => {
     let cancelled = false
@@ -73,6 +75,7 @@ export default function App() {
       {shown === 'it1' && <BaseSketchCheck />}
       {shown === 'm3' && <GenerateCheck />}
       {shown === 'm4' && <PlanCheck />}
+      {shown === 'm5' && <CheckpointCheck />}
     </div>
   )
 }
