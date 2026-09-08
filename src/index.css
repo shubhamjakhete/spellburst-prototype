@@ -196,6 +196,13 @@ pre.code {
   padding: 12px 14px;
 }
 
+.editor {
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: #fff;
+}
+
 /* ---- controls ---- */
 
 .field {

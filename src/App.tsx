@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import BeforeAfter from './components/BeforeAfter'
 import ChangePlan from './components/ChangePlan'
+import CodeEditor from './components/CodeEditor'
 import ErrorPanel from './components/ErrorPanel'
 import PromptInput from './components/PromptInput'
 import RefinementInput from './components/RefinementInput'
@@ -95,8 +96,20 @@ export default function App() {
 
   const [busy, setBusy] = useState<Busy>(null)
   const [failure, setFailure] = useState<Failure | null>(null)
+  const editSeq = useRef(0)
 
   const dev = new URLSearchParams(window.location.search).get('dev') === '1'
+
+  const commitEdit = useCallback(async (code: string) => {
+    const mine = ++editSeq.current
+    setPlan(null)
+    setApplied(null)
+    setRequest(null)
+    setSeeded(false)
+    const next = await versionOf(code)
+    if (mine !== editSeq.current) return
+    setCurrent(next)
+  }, [])
 
   // Measuring the seed needs a browser, so it cannot be done up front.
   useEffect(() => {
@@ -128,6 +141,7 @@ export default function App() {
       : null
 
   async function generate() {
+    editSeq.current += 1
     setBusy('generating')
     setFailure(null)
     setPlan(null)
@@ -162,6 +176,7 @@ export default function App() {
 
   async function apply(approved: ApprovedPlan) {
     if (!current || !request) return
+    editSeq.current += 1
     setBusy('applying')
     setFailure(null)
     try {
@@ -187,6 +202,7 @@ export default function App() {
 
   function revert() {
     if (!previous) return
+    editSeq.current += 1
     setCurrent(previous)
     setPrevious(null)
     startOver()
@@ -275,7 +291,15 @@ export default function App() {
           {current && (
             <div className="panel" style={{ marginTop: 16 }}>
               <h2>The code</h2>
-              <pre className="code">{current.code}</pre>
+              <CodeEditor
+                value={current.code}
+                disabled={busy !== null}
+                onCommit={(code) => void commitEdit(code)}
+              />
+              <p className="aside">
+                Edits re-run after a pause. A broken edit shows an error rather
+                than crashing.
+              </p>
             </div>
           )}
         </div>
