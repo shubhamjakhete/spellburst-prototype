@@ -83,6 +83,20 @@ palette changed" ought to mean.
 Eight hue names as specified, plus white, grey and black for pixels with no
 usable hue.
 
+### JSON is extracted, not forced by prefill
+
+CLAUDE.md says to end the messages array with an assistant turn containing
+`{` and parse `"{" + response`. `claude-sonnet-5` rejects that outright:
+"This model does not support assistant message prefill. The conversation
+must end with a user message." All three plan requests failed with a 400
+before the technique was dropped.
+
+`parseJsonReply` in `api/_shared.js` does the same job after the fact:
+strip any markdown fence, take the outermost braces, parse what is between
+them. Weaker than prefill, since it trusts the model to produce JSON rather
+than obliging it to, so the plan endpoint validates the shape afterwards
+and returns 502 rather than passing a malformed plan to the interface.
+
 ### The six base sketches are hand written
 
 EVAL.md describes them as AI generated then frozen. BUILD.md orders the

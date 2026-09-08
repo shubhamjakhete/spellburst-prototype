@@ -56,15 +56,32 @@ export function stripFences(text) {
     .trim();
 }
 
-export async function ask({ system, user, maxTokens, prefill }) {
-  const messages = [{ role: "user", content: user }];
-  if (prefill) messages.push({ role: "assistant", content: prefill });
+/**
+ * Pulls a JSON object out of a reply. The plan is asked for as bare JSON, but
+ * models still fence it or introduce it with a sentence, so take the outermost
+ * braces and ignore whatever surrounds them.
+ *
+ * The usual trick of prefilling the assistant turn with "{" is not available:
+ * this model rejects a conversation that does not end on a user message.
+ */
+export function parseJsonReply(text) {
+  const body = stripFences(text);
+  const open = body.indexOf("{");
+  const close = body.lastIndexOf("}");
+  if (open === -1 || close <= open) return null;
+  try {
+    return JSON.parse(body.slice(open, close + 1));
+  } catch {
+    return null;
+  }
+}
 
+export async function ask({ system, user, maxTokens }) {
   const response = await anthropic().messages.create({
     model: MODEL,
     max_tokens: maxTokens,
     system,
-    messages,
+    messages: [{ role: "user", content: user }],
   });
 
   const text = response.content

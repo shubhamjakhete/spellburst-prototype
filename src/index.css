@@ -258,6 +258,247 @@ pre.code {
   cursor: default;
 }
 
+/* ---- the checkpoint ---- */
+
+.sheet {
+  border: 1px solid var(--ink);
+  border-radius: var(--r);
+  background: var(--sheet);
+  overflow: hidden;
+}
+
+.sheet > header {
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sheet > header h2 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.sheet > header p {
+  font-size: 13.5px;
+  color: var(--soft);
+  max-width: 52ch;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 620px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.col {
+  padding: 16px 20px 18px;
+}
+
+.col + .col {
+  border-left: 1px solid var(--rule);
+}
+
+@media (max-width: 620px) {
+  .col + .col {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+}
+
+.col h3 {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.col > p {
+  font-size: 12.5px;
+  color: var(--soft);
+  margin-bottom: 14px;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.item:first-of-type {
+  border-top: 0;
+}
+
+.item input {
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.item label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.item .why {
+  display: block;
+  color: var(--soft);
+  font-size: 12.5px;
+  margin-top: 2px;
+  max-width: 34ch;
+}
+
+.item.off label {
+  color: #9aa096;
+}
+
+.item.off .why {
+  text-decoration: line-through;
+  text-decoration-color: #c2c7bd;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 1px 6px;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  color: var(--soft);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+}
+
+.move {
+  margin-left: auto;
+  align-self: center;
+  flex: none;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 3px 8px;
+  font-size: 12px;
+  color: var(--soft);
+  cursor: pointer;
+}
+
+.extra {
+  padding: 16px 20px;
+  border-top: 1px solid var(--rule);
+}
+
+.extra label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.sheet footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid var(--ink);
+}
+
+.sheet footer .note {
+  font-size: 12.5px;
+  color: var(--soft);
+  margin-right: auto;
+  max-width: 30ch;
+}
+
+/* ---- verdicts ---- */
+
+.verdicts {
+  border-top: 1px solid var(--rule);
+  margin-top: 4px;
+}
+
+.v {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.v .name {
+  font-size: 14px;
+  flex: 1;
+}
+
+.v .num {
+  color: var(--soft);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+}
+
+.v .call {
+  font-size: 12.5px;
+  font-weight: 600;
+  flex: none;
+}
+
+.v.held .call {
+  color: var(--held);
+}
+
+.v.skip .call {
+  color: var(--soft);
+  font-weight: 400;
+}
+
+.v.broke {
+  margin: 0 -20px;
+  padding: 14px 20px;
+  background: #f7ece2;
+  border-top: 2px solid var(--broke);
+  border-bottom: 2px solid var(--broke);
+}
+
+.v.broke .call {
+  color: var(--broke);
+}
+
+.v.broke .name {
+  font-weight: 600;
+}
+
+/* ---- the three steps, always on screen ---- */
+
+.steps {
+  display: flex;
+  margin-bottom: 22px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.steps div {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: #9aa096;
+  background: var(--sheet);
+}
+
+.steps div + div {
+  border-left: 1px solid var(--rule);
+}
+
+.steps div.now {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.steps div.done {
+  color: var(--soft);
+}
+
 /* ---- check rows ---- */
 
 .check {

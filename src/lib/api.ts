@@ -49,3 +49,21 @@ export async function generateSketch(prompt: string): Promise<string> {
   const { code } = await post<{ code: string }>('/api/generate', { prompt })
   return code
 }
+
+export type PlanItem = {
+  property: string
+  description: string
+}
+
+export type Plan = {
+  summary: string
+  change: PlanItem[]
+  preserve: PlanItem[]
+}
+
+export function planModification(
+  code: string,
+  request: string,
+): Promise<Plan> {
+  return post<Plan>('/api/plan', { code, request })
+}
