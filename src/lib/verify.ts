@@ -31,9 +31,20 @@ export function measurableAs(item: {
   property: string
   description: string
 }): Measurable {
-  const text = `${item.property} ${item.description}`
-  if (mentionsMovement(text)) return 'motion'
-  if (mentionsColour(text)) return 'colour'
+  // The property name is the decision. "particle count" is not a motion
+  // promise just because its description happens to say "drifting bits".
+  if (mentionsMovement(item.property)) return 'motion'
+  if (mentionsColour(item.property)) return 'colour'
+
+  // Fall back to the words CLAUDE.md named, not the wider scene-verb list.
+  // Those verbs ("drifting", "pulsing") name what the artwork is, not what
+  // is being held.
+  if (/\b(movement|motion|speed|animation|animat\w*)\b/i.test(item.description)) {
+    return 'motion'
+  }
+  if (/\b(colour\w*|color\w*|palette)\b/i.test(item.description)) {
+    return 'colour'
+  }
   return null
 }
 

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import BeforeAfter from './components/BeforeAfter'
 import ChangePlan from './components/ChangePlan'
 import ErrorPanel from './components/ErrorPanel'
 import PromptInput from './components/PromptInput'
@@ -18,6 +19,28 @@ import {
 import { readSketch, type Reading } from './lib/measure'
 import { SketchError } from './lib/sketch'
 import { verify } from './lib/verify'
+import { BASE_SKETCHES } from './eval/sketches'
+
+/**
+ * The checkpoint is the point of this, and it is invisible until a sketch
+ * exists. So one is already here: a fixed sketch rather than a generated one,
+ * so the first screen is the same every time and costs nothing to load.
+ *
+ * Which one is settable, because the six differ in how much of the canvas
+ * moves and so in how much a movement promise can actually be checked.
+ */
+function seedSketch(): (typeof BASE_SKETCHES)[number] {
+  const asked = new URLSearchParams(window.location.search).get('seed')
+  // Night sky is first in the list, but its movement lives in too small a
+  // fraction of the frame to check. Open on one that actually moves.
+  return (
+    BASE_SKETCHES.find((sketch) => sketch.id === asked) ??
+    BASE_SKETCHES.find((sketch) => sketch.id === 'drifting-particles') ??
+    BASE_SKETCHES[0]
+  )
+}
+
+const SEED = seedSketch()
 
 const STEPS = [
   'Describe it',
@@ -54,10 +77,17 @@ async function versionOf(code: string): Promise<Version> {
 }
 
 export default function App() {
+  // Left empty on purpose. Prefilling it would suggest the sketch on screen
+  // came from that prompt, and it did not.
   const [prompt, setPrompt] = useState('')
   const [refinement, setRefinement] = useState('')
+  const [seeded, setSeeded] = useState(true)
 
-  const [current, setCurrent] = useState<Version | null>(null)
+  const [current, setCurrent] = useState<Version | null>({
+    code: SEED.code,
+    reading: null,
+    runFailure: null,
+  })
   const [previous, setPrevious] = useState<Version | null>(null)
   const [request, setRequest] = useState<string | null>(null)
   const [plan, setPlan] = useState<Plan | null>(null)
@@ -68,7 +98,29 @@ export default function App() {
 
   const dev = new URLSearchParams(window.location.search).get('dev') === '1'
 
-  const step = plan ? 2 : applied ? 3 : current ? 1 : 0
+  // Measuring the seed needs a browser, so it cannot be done up front.
+  useEffect(() => {
+    let cancelled = false
+    void versionOf(SEED.code).then((version) => {
+      if (!cancelled) setCurrent((now) => (now?.code === SEED.code ? version : now))
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const step =
+    busy === 'generating'
+      ? 0
+      : busy === 'planning'
+        ? 1
+        : busy === 'applying' || applied
+          ? 3
+          : plan
+            ? 2
+            : current
+              ? 1
+              : 0
 
   const verdicts =
     applied && previous
@@ -83,6 +135,7 @@ export default function App() {
     setRequest(null)
     setCurrent(null)
     setPrevious(null)
+    setSeeded(false)
     try {
       setCurrent(await versionOf(await generateSketch(prompt)))
     } catch (error) {
@@ -132,17 +185,28 @@ export default function App() {
     setRefinement('')
   }
 
+  function revert() {
+    if (!previous) return
+    setCurrent(previous)
+    setPrevious(null)
+    startOver()
+  }
+
   const stageStatus = busy === 'generating'
     ? 'writing the sketch…'
-    : busy === 'applying'
+    : busy === 'planning'
+      ? 'working out what you mean…'
+      : busy === 'applying'
       ? 'applying your approved changes…'
-      : !current
-        ? 'nothing here yet'
-        : applied
-          ? 'changed'
-          : plan
-            ? 'unchanged so far'
-            : 'running'
+        : !current
+          ? 'nothing here yet'
+          : applied
+            ? 'changed'
+            : plan
+              ? 'unchanged so far'
+              : seeded
+                ? `${SEED.title} · an example to start from`
+                : 'running'
 
   if (dev) {
     return (
@@ -191,6 +255,23 @@ export default function App() {
             </div>
           )}
 
+          {previous && (
+            <div className="panel" style={{ marginTop: 16 }}>
+              <h2>Before and after</h2>
+              <div className="stage" style={{ marginTop: 12 }}>
+                <BeforeAfter
+                  before={previous.reading}
+                  after={current?.reading ?? null}
+                />
+              </div>
+              <div className="row">
+                <button className="btn quiet" onClick={revert}>
+                  Go back to the previous version
+                </button>
+              </div>
+            </div>
+          )}
+
           {current && (
             <div className="panel" style={{ marginTop: 16 }}>
               <h2>The code</h2>
@@ -226,6 +307,37 @@ export default function App() {
               onCancel={startOver}
               onApply={(approved) => void apply(approved)}
             />
+          ) : applied && verdicts ? (
+            <div className="panel">
+              <h2>What held</h2>
+              <p className="aside" style={{ margin: '0 0 4px' }}>
+                {applied.approvedChanges.length} approved{' '}
+                {applied.approvedChanges.length === 1
+                  ? 'change was'
+                  : 'changes were'}{' '}
+                made. These are the things you asked to leave alone.
+              </p>
+
+              <div className="verdicts">
+                {verdicts.map((verdict) => (
+                  <VerifyBadge key={verdict.property} verdict={verdict} />
+                ))}
+              </div>
+
+              <p className="aside">
+                Ticking a box asks the model to leave something alone. It
+                does not force it. Movement and colour can be measured
+                either side of the change, so those two are checked. The
+                rest are not, and saying so is more useful than implying
+                they were.
+              </p>
+
+              <div className="row">
+                <button className="btn" onClick={startOver}>
+                  Change something else
+                </button>
+              </div>
+            </div>
           ) : (
             <>
               <PromptInput
@@ -242,39 +354,6 @@ export default function App() {
                   onChange={setRefinement}
                   onSubmit={() => void makePlan()}
                 />
-              )}
-
-              {applied && verdicts && (
-                <div className="panel">
-                  <h2>What held</h2>
-                  <p className="aside" style={{ margin: '0 0 4px' }}>
-                    {applied.approvedChanges.length} approved{' '}
-                    {applied.approvedChanges.length === 1
-                      ? 'change was'
-                      : 'changes were'}{' '}
-                    made. These are the things you asked to leave alone.
-                  </p>
-
-                  <div className="verdicts">
-                    {verdicts.map((verdict) => (
-                      <VerifyBadge key={verdict.property} verdict={verdict} />
-                    ))}
-                  </div>
-
-                  <p className="aside">
-                    Ticking a box asks the model to leave something alone. It
-                    does not force it. Movement and colour can be measured
-                    either side of the change, so those two are checked. The
-                    rest are not, and saying so is more useful than implying
-                    they were.
-                  </p>
-
-                  <div className="row">
-                    <button className="btn" onClick={startOver}>
-                      Change something else
-                    </button>
-                  </div>
-                </div>
               )}
             </>
           )}
