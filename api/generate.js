@@ -10,8 +10,8 @@ no explanation before or after.
 Rules for the sketch:
 - Use p5.js 1.x global mode: define setup() and draw().
 - Call createCanvas(600, 400) in setup(). Use the default 2D renderer, never WEBGL.
-- Keep the whole program under 80 lines. This is a hard limit: use fewer
-  elements rather than more code.
+- Keep the whole program under 80 lines. Count them before you answer. If you
+  are over, remove a feature rather than compressing the code.
 - If the sketch is meant to move, animate it and do not call noLoop().
 - Make any movement plainly visible rather than a slow drift: something should
   clearly change position, size or brightness within half a second.

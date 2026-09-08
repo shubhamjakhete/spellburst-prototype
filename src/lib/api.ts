@@ -67,3 +67,22 @@ export function planModification(
 ): Promise<Plan> {
   return post<Plan>('/api/plan', { code, request })
 }
+
+export type ApprovedPlan = {
+  approvedChanges: PlanItem[]
+  preserved: PlanItem[]
+  extraInstruction: string
+}
+
+export async function applyModification(
+  code: string,
+  request: string,
+  approved: ApprovedPlan,
+): Promise<string> {
+  const result = await post<{ code: string }>('/api/apply', {
+    code,
+    request,
+    ...approved,
+  })
+  return result.code
+}

@@ -105,12 +105,23 @@ header.masthead {
 }
 
 .stage img,
-.stage iframe {
+.stage iframe,
+.stage .empty {
   display: block;
   width: 100%;
   height: auto;
   border: 0;
   border-radius: 1px;
+}
+
+/* The iframe has no intrinsic ratio to fall back on, unlike an image. */
+.stage iframe,
+.stage .empty {
+  aspect-ratio: 3 / 2;
+}
+
+.stage .empty {
+  background: #191d16;
 }
 
 .stagefoot {

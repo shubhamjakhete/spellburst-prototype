@@ -5,6 +5,8 @@
  * brighter" or "the stars sped up", not to adjudicate teal against cyan.
  */
 
+import { runSketch } from './sketch'
+
 /** Frames are reduced to this before anything is counted. */
 const SAMPLE_SIZE = 64
 
@@ -139,4 +141,26 @@ export async function measurePalette(frame: string): Promise<ColourName> {
   return [...counts.entries()].sort(
     (left, right) => right[1] - left[1] || left[0].localeCompare(right[0]),
   )[0][0]
+}
+
+/** Everything known about one version of a sketch, from one run of it. */
+export type Reading = {
+  frameA: string
+  frameB: string
+  motion: number
+  palette: ColourName
+}
+
+/**
+ * Run a sketch once and take both measurements from that single run, so a
+ * before and after comparison is never made across two different runs of the
+ * same code.
+ */
+export async function readSketch(code: string): Promise<Reading> {
+  const { frameA, frameB } = await runSketch(code)
+  const [motion, palette] = await Promise.all([
+    measureMotion(frameA, frameB),
+    measurePalette(frameA),
+  ])
+  return { frameA, frameB, motion, palette }
 }

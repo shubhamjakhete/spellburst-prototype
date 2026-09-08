@@ -1,17 +1,6 @@
 import { useId, useMemo, useState } from 'react'
-import type { Plan, PlanItem } from '../lib/api'
+import type { ApprovedPlan, Plan, PlanItem } from '../lib/api'
 import { measurableAs } from '../lib/verify'
-
-/**
- * Exactly what gets sent to apply once the plan has been edited. Nothing is
- * inferred downstream: if an item is not in one of these two lists, the model
- * is never told about it.
- */
-export type Decision = {
-  approvedChanges: PlanItem[]
-  preserved: PlanItem[]
-  extraInstruction: string
-}
 
 type Side = 'change' | 'preserve'
 
@@ -57,7 +46,11 @@ function rowsFrom(plan: Plan): Row[] {
   ]
 }
 
-function decisionFrom(rows: Row[], extraInstruction: string): Decision {
+/**
+ * Exactly what gets sent to apply. Nothing is inferred downstream: if an item
+ * is not in one of these two lists, the model is never told about it.
+ */
+function decisionFrom(rows: Row[], extraInstruction: string): ApprovedPlan {
   const live = rows.filter((row) => row.checked)
   const strip = ({ property, description }: Row): PlanItem => ({
     property,
@@ -86,7 +79,7 @@ type Props = {
   plan: Plan
   busy?: boolean
   onCancel: () => void
-  onApply: (decision: Decision) => void
+  onApply: (approved: ApprovedPlan) => void
 }
 
 export default function ChangePlan({

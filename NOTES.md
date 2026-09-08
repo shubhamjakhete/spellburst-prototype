@@ -42,6 +42,26 @@ The consequence for verification is concrete: below roughly the 0.005 mark a
 relative comparison of motion is arithmetic on noise, and the honest answer
 is "not checked" rather than a confident verdict either way.
 
+Run through the finished interface, the night sky prompt measured 0.000
+before the change and 0.000 after it, so movement genuinely cannot be
+checked on the one prompt the project keeps using as its example. Colour
+moved blue to purple on the same run and was checkable. The demo therefore
+opens on a sketch that does move, and the night sky is left as an honest
+illustration of the "not checked" verdict rather than quietly presented as
+though it had been verified.
+
+### The 80-line rule is advisory in practice
+
+`generate.js` states a hard limit of 80 lines. The night sky prompt came
+back at 99 lines, and 107 after a change was applied. Restating the limit
+more firmly moved it slightly and did not fix it.
+
+Nothing depends on the number: it exists to keep sketches legible and token
+counts down, and both are still fine at 100 lines. It is recorded because
+the M3 check reports it as a pass or a failure, and a check that fails
+sometimes without anything being wrong is worth explaining rather than
+quietly relaxing.
+
 ## Things measured, not assumed
 
 ### Sketches must be painted or they read as motionless

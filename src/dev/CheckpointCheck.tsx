@@ -1,6 +1,11 @@
 import { useState } from 'react'
-import ChangePlan, { type Decision } from '../components/ChangePlan'
-import { ApiError, planModification, type Plan } from '../lib/api'
+import ChangePlan from '../components/ChangePlan'
+import {
+  ApiError,
+  planModification,
+  type ApprovedPlan,
+  type Plan,
+} from '../lib/api'
 import { BASE_SKETCHES } from '../eval/sketches'
 
 const SKETCH = BASE_SKETCHES[0]
@@ -14,7 +19,7 @@ export default function CheckpointCheck() {
   const [plan, setPlan] = useState<Plan | null>(null)
   const [failure, setFailure] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState<Decision | null>(null)
+  const [sent, setSent] = useState<ApprovedPlan | null>(null)
 
   async function fetchPlan() {
     setLoading(true)
