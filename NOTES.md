@@ -181,7 +181,12 @@ and returns 502 rather than passing a malformed plan to the interface.
 
 ### The six base sketches are hand written
 
-EVAL.md describes them as AI generated then frozen. BUILD.md orders the
-integration check that needs them before the generate endpoint exists, so
-they were written by hand in the style the model produces. Unresolved; either
-regenerate them once generation works, or correct EVAL.md.
+EVAL.md originally described them as AI generated then frozen. BUILD.md
+orders the integration check that needs them before the generate endpoint
+exists, so they were written by hand in the style the model produces and
+then frozen. EVAL.md now says that.
+
+Regenerating them from the model after M3 would have made the eval
+compare the system to its own generator's habits. Hand-written sketches
+with known motion and colour are a cleaner substrate, and they are what
+IT-1 already proved the measures against.

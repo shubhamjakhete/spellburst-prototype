@@ -127,16 +127,17 @@ screen within about fifteen seconds.
 
 ## Checklist before publishing the link
 
-- [ ] Spend limit set in the Anthropic console
-- [ ] `ANTHROPIC_API_KEY` and `DEMO_KEY` set in Vercel
-- [ ] `.env` is gitignored, and the key is not in any commit
+- [x] Spend limit set in the Anthropic console
+- [x] `ANTHROPIC_API_KEY` and `DEMO_KEY` set in Vercel
+- [x] `.env` is gitignored, and the key is not in any commit
 - [ ] Open the deployed URL in a private window and use it start to
-      finish. Not localhost. The deployed URL.
-- [ ] A sketch is on screen at page load
-- [ ] Example refinement buttons work
-- [ ] The plan screen renders and items can be unchecked and moved
-- [ ] `EVAL.md` has real committed numbers and a run date
-- [ ] README matches what actually shipped
+      finish. Not localhost. The deployed URL. (Walked end-to-end on
+      the deployed URL from here. A private-window pass is still yours.)
+- [x] A sketch is on screen at page load
+- [x] Example refinement buttons work
+- [x] The plan screen renders and items can be unchecked and moved
+- [x] `EVAL.md` has real committed numbers and a run date
+- [x] README matches what actually shipped
 
 ## Time
 

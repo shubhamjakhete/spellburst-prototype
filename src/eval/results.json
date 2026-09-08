@@ -1,0 +1,1567 @@
+{
+  "started": "2026-09-08T21:43:59.231Z",
+  "finished": "2026-09-08T22:07:01.442Z",
+  "model": "claude-sonnet-5",
+  "applyCalls": 120,
+  "planCalls": 42,
+  "part1": [
+    {
+      "caseId": 1,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.053",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.089",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.055",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.081",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.039",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.061",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.072",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.068",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.058",
+      "because": ""
+    },
+    {
+      "caseId": 1,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.030 → 0.049",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 2,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "blue → blue",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.089",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.094",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.069",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.040",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.055",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.025 → 0.028",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.048",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.093",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.025 → 0.024",
+      "because": ""
+    },
+    {
+      "caseId": 3,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.025 → 0.017",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → orange",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → orange",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → orange",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → orange",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → red",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "purple → purple",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "purple → purple",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "purple → purple",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "changed",
+      "detail": "purple → pink",
+      "because": ""
+    },
+    {
+      "caseId": 4,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "purple → purple",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.173 → 0.032",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.173 → 0.036",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.173 → 0.015",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.173 → 0.023",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.033",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.161",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.127",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.167",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.133",
+      "because": ""
+    },
+    {
+      "caseId": 5,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.173 → 0.128",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "changed",
+      "detail": "green → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "changed",
+      "detail": "green → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "changed",
+      "detail": "green → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "changed",
+      "detail": "green → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 6,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "green → green",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.125",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.099",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.235",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.179",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.113",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.199",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.216",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.124",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.141",
+      "because": ""
+    },
+    {
+      "caseId": 7,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.171 → 0.224",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "changed",
+      "detail": "cyan → purple",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "changed",
+      "detail": "cyan → blue",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "changed",
+      "detail": "cyan → blue",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 8,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "cyan → cyan",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.042",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.046",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.020 → 0.036",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.060",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.046",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.047",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.020 → 0.033",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.035",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.031",
+      "because": ""
+    },
+    {
+      "caseId": 9,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.020 → 0.032",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "changed",
+      "detail": "orange → grey",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 10,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "orange → orange",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.256",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.297",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.096 → 0.211",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.283",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.096 → 0.149",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "asked",
+      "rep": 1,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.128",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "asked",
+      "rep": 2,
+      "property": "movement",
+      "call": "changed",
+      "detail": "0.096 → 0.214",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "asked",
+      "rep": 3,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.151",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "asked",
+      "rep": 4,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.232",
+      "because": ""
+    },
+    {
+      "caseId": 11,
+      "condition": "asked",
+      "rep": 5,
+      "property": "movement",
+      "call": "kept",
+      "detail": "0.096 → 0.145",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "not-asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "not-asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "not-asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "not-asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "not-asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "asked",
+      "rep": 1,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "asked",
+      "rep": 2,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "asked",
+      "rep": 3,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "asked",
+      "rep": 4,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    },
+    {
+      "caseId": 12,
+      "condition": "asked",
+      "rep": 5,
+      "property": "colour",
+      "call": "kept",
+      "detail": "pink → pink",
+      "because": ""
+    }
+  ],
+  "part2": [
+    {
+      "sketchId": "night-sky",
+      "request": "make it more dramatic",
+      "change": [
+        "star trails",
+        "background contrast",
+        "star coloring",
+        "speed variance"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it calmer",
+      "change": [
+        "star speed",
+        "star brightness",
+        "background tone",
+        "star size"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it feel futuristic",
+      "change": [
+        "star color",
+        "star trails",
+        "background texture",
+        "star glow"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it more chaotic",
+      "change": [
+        "movement direction",
+        "star color",
+        "speed variation",
+        "size flicker"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it warmer",
+      "change": [
+        "background color",
+        "star color",
+        "color palette mood"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it more alive",
+      "change": [
+        "star brightness",
+        "star color",
+        "vertical drift",
+        "background tone"
+      ]
+    },
+    {
+      "sketchId": "night-sky",
+      "request": "make it more mysterious",
+      "change": [
+        "background color",
+        "star color",
+        "star opacity",
+        "movement pattern"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it more dramatic",
+      "change": [
+        "color palette",
+        "movement speed",
+        "circle size range",
+        "visual trailing"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it calmer",
+      "change": [
+        "particle speed",
+        "background color",
+        "particle color"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it feel futuristic",
+      "change": [
+        "color palette",
+        "trail effect",
+        "shape style",
+        "movement pattern"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it more chaotic",
+      "change": [
+        "velocity range",
+        "per-bit color",
+        "size variation",
+        "jitter motion"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it warmer",
+      "change": [
+        "background color",
+        "particle fill color"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it more alive",
+      "change": [
+        "particle motion",
+        "particle color",
+        "particle size pulsing",
+        "trail effect"
+      ]
+    },
+    {
+      "sketchId": "drifting-particles",
+      "request": "make it more mysterious",
+      "change": [
+        "background fade",
+        "color palette",
+        "movement speed",
+        "size flicker"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it more dramatic",
+      "change": [
+        "color palette",
+        "growth speed",
+        "size range",
+        "flash effect"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it calmer",
+      "change": [
+        "cycle duration",
+        "growth curve",
+        "fill color"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it feel futuristic",
+      "change": [
+        "color palette",
+        "glow effect",
+        "motion style",
+        "background detail"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it more chaotic",
+      "change": [
+        "circle position",
+        "growth pattern",
+        "fill color",
+        "shape count"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it warmer",
+      "change": [
+        "background color",
+        "circle color"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it more alive",
+      "change": [
+        "movement pattern",
+        "color variation",
+        "shape count",
+        "subtle motion"
+      ]
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "request": "make it more mysterious",
+      "change": [
+        "fill color",
+        "background tone",
+        "pulse timing",
+        "edge softness"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it more dramatic",
+      "change": [
+        "color palette",
+        "rotation speed",
+        "stroke weight",
+        "added glow or trails"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it calmer",
+      "change": [
+        "rotation speed",
+        "stroke color",
+        "stroke weight"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it feel futuristic",
+      "change": [
+        "line color",
+        "glow effect",
+        "grid nodes",
+        "pulse animation"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it more chaotic",
+      "change": [
+        "rotation speed",
+        "line jitter",
+        "color palette",
+        "grid density"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it warmer",
+      "change": [
+        "stroke color",
+        "background tone"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it more alive",
+      "change": [
+        "color palette",
+        "line motion",
+        "line thickness",
+        "speed variation"
+      ]
+    },
+    {
+      "sketchId": "rotating-grid",
+      "request": "make it more mysterious",
+      "change": [
+        "line color",
+        "rotation speed",
+        "background tone",
+        "opacity"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it more dramatic",
+      "change": [
+        "wave amplitude",
+        "stroke color",
+        "animation speed",
+        "line weight"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it calmer",
+      "change": [
+        "animation speed",
+        "wave amplitude",
+        "stroke color",
+        "stroke weight"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it feel futuristic",
+      "change": [
+        "stroke color",
+        "background treatment",
+        "line glow",
+        "wave layering"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it more chaotic",
+      "change": [
+        "wave randomness",
+        "motion speed",
+        "line count",
+        "stroke color"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it warmer",
+      "change": [
+        "stroke color",
+        "background color",
+        "color saturation"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it more alive",
+      "change": [
+        "wave layering",
+        "color shift",
+        "stroke weight pulse",
+        "secondary motion"
+      ]
+    },
+    {
+      "sketchId": "wave-line",
+      "request": "make it more mysterious",
+      "change": [
+        "stroke color",
+        "animation speed",
+        "background layering",
+        "stroke weight"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it more dramatic",
+      "change": [
+        "color palette",
+        "orbit radius",
+        "motion speed",
+        "trail effect"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it calmer",
+      "change": [
+        "orbit speed",
+        "orbit radius",
+        "fill color",
+        "background tone"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it feel futuristic",
+      "change": [
+        "dot color",
+        "background texture",
+        "trail effect",
+        "circle edges"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it more chaotic",
+      "change": [
+        "orbit motion",
+        "dot color",
+        "motion rate",
+        "size variation"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it warmer",
+      "change": [
+        "dot fill color",
+        "background tone",
+        "color variation"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it more alive",
+      "change": [
+        "dot color",
+        "size pulsing",
+        "orbit motion",
+        "trailing effect"
+      ]
+    },
+    {
+      "sketchId": "scattered-dots",
+      "request": "make it more mysterious",
+      "change": [
+        "dot color",
+        "orbit speed",
+        "trail fade",
+        "size variation"
+      ]
+    }
+  ],
+  "part3": [
+    {
+      "sketchId": "night-sky",
+      "title": "night sky, moving stars",
+      "motionExpected": "subtle",
+      "motionMeasured": 0.029964192708333334,
+      "motionClass": "subtle",
+      "motionPass": true,
+      "colourExpected": "blue",
+      "colourMeasured": "blue",
+      "colourPass": true
+    },
+    {
+      "sketchId": "drifting-particles",
+      "title": "drifting particles",
+      "motionExpected": "subtle",
+      "motionMeasured": 0.02549370659722222,
+      "motionClass": "subtle",
+      "motionPass": true,
+      "colourExpected": "purple",
+      "colourMeasured": "purple",
+      "colourPass": true
+    },
+    {
+      "sketchId": "pulsing-circle",
+      "title": "pulsing circle",
+      "motionExpected": "lively",
+      "motionMeasured": 0.1727535871119281,
+      "motionClass": "lively",
+      "motionPass": true,
+      "colourExpected": "green",
+      "colourMeasured": "green",
+      "colourPass": true
+    },
+    {
+      "sketchId": "rotating-grid",
+      "title": "rotating grid",
+      "motionExpected": "lively",
+      "motionMeasured": 0.17140235651552288,
+      "motionClass": "lively",
+      "motionPass": true,
+      "colourExpected": "cyan",
+      "colourMeasured": "cyan",
+      "colourPass": true
+    },
+    {
+      "sketchId": "wave-line",
+      "title": "wave line",
+      "motionExpected": "subtle",
+      "motionMeasured": 0.019731668709150326,
+      "motionClass": "subtle",
+      "motionPass": true,
+      "colourExpected": "orange",
+      "colourMeasured": "orange",
+      "colourPass": true
+    },
+    {
+      "sketchId": "scattered-dots",
+      "title": "scattered dots",
+      "motionExpected": "lively",
+      "motionMeasured": 0.09650607638888889,
+      "motionClass": "lively",
+      "motionPass": true,
+      "colourExpected": "pink",
+      "colourMeasured": "pink",
+      "colourPass": true
+    }
+  ]
+}

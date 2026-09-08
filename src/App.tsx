@@ -8,6 +8,7 @@ import RefinementInput from './components/RefinementInput'
 import SketchPreview from './components/SketchPreview'
 import VerifyBadge from './components/VerifyBadge'
 import Checks from './dev/Checks'
+import EvalPage from './eval/EvalPage'
 import {
   ApiError,
   accessCode,
@@ -98,7 +99,9 @@ export default function App() {
   const [failure, setFailure] = useState<Failure | null>(null)
   const editSeq = useRef(0)
 
-  const dev = new URLSearchParams(window.location.search).get('dev') === '1'
+  const params = new URLSearchParams(window.location.search)
+  const dev = params.get('dev') === '1'
+  const evalMode = params.get('eval') === '1'
 
   const commitEdit = useCallback(async (code: string) => {
     const mine = ++editSeq.current
@@ -223,6 +226,8 @@ export default function App() {
               : seeded
                 ? `${SEED.title} · an example to start from`
                 : 'running'
+
+  if (evalMode) return <EvalPage />
 
   if (dev) {
     return (

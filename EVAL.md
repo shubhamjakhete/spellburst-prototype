@@ -90,32 +90,51 @@ null case looks like, so a small gap elsewhere is not over-read.
 
 ### Results
 
-<!-- paste from the eval run -->
+Run 8 September 2026. `claude-sonnet-5`. 120 apply calls, no errors, no
+unchecked trials.
 
 | # | property | drift, not asked | drift, asked | gap |
 |---|---|---|---|---|
-|  |  | /5 | /5 | |
+| 1 | movement | 0/5 | 0/5 | 0 |
+| 2 | colour | 0/5 | 0/5 | 0 |
+| 3 | movement | 5/5 | 3/5 | 2 |
+| 4 | colour | 5/5 | 1/5 | 4 |
+| 5 | movement | 4/5 | 0/5 | 4 |
+| 6 | colour | 4/5 | 0/5 | 4 |
+| 7 | movement | 0/5 | 0/5 | 0 |
+| 8 | colour | 3/5 | 0/5 | 3 |
+| 9 | movement | 1/5 | 1/5 | 0 |
+| 10 | colour | 1/5 | 0/5 | 1 |
+| 11 | movement | 2/5 | 1/5 | 1 |
+| 12 | colour | 0/5 | 0/5 | 0 |
 
-**Overall drift without asking:** _ / 60
-**Overall drift when asked:** _ / 60
+**Overall drift without asking:** 25 / 60
+**Overall drift when asked:** 6 / 60
 
 ### Reading this
 
-<!-- Two or three sentences once numbers exist.
+The checkbox does work, on average. Drift falls from 25/60 to 6/60 when
+the property is named in Preserve. That is not a small gap.
 
-     Large gap: the constraint does real work and the checkbox is
-     meaningful. Say by how much.
+It is also not a uniform one. Four cases never drifted in either
+condition (1, 2, 7, 12): the model was not going to touch that property,
+so the checkbox had nothing to do. The interesting conflict cases — 1,
+3, 9, 11, where the request implies more motion and the constraint
+forbids it — are mixed and mostly weak. Case 3 is the only one of those
+four that looks like a real fight (5/5 vs 3/5), and even there asking
+still lost three times. Cases 4, 5, 6 and 8 are where the gap lives:
+colour changes, and "make it calmer", which turns out to move the pulse
+unless you ask it not to.
 
-     Small or no gap: the checkbox is decoration. Say so plainly, then
-     say what would fix it. The obvious fix is enforcement rather than
-     request: reject an applied change that violates a measured
-     constraint and retry with the violation named.
+Case 5 was written down as a null, request and constraint agreeing.
+Without asking, calmer drifted 4/5. The request was never null. The
+control condition is what caught that.
 
-     Mixed: report which cases moved and which did not, and resist
-     inventing a pattern from twelve cases.
-
-     A negative result reported clearly is worth more than a positive
-     one that was never at risk. -->
+A sentence in a prompt is doing real work, and it is not a guarantee.
+The cases that most need a guarantee — keep the motion while asking for
+drama, energy, intensity, chaos — are the ones where a polite request
+is least enough. Enforcement (reject and retry when the measure moves)
+is the obvious next step, and these numbers are why.
 
 ---
 
@@ -144,18 +163,27 @@ Two measures:
 
 ### Results
 
-<!-- paste from the eval run -->
-
 | sketch | mean overlap across 7 requests | calmer vs chaotic conflict? |
 |---|---|---|
-|  |  |  |
+| night-sky | 0.11 | yes |
+| drifting-particles | 0.06 | yes |
+| pulsing-circle | 0.04 | no |
+| rotating-grid | 0.11 | no |
+| wave-line | 0.17 | no |
+| scattered-dots | 0.09 | yes |
+
+Conflict here means the two change lists share no property names. "No"
+means they share at least one. On the three "no" sketches that shared
+name is one item (fill colour, rotation speed, or stroke colour); the
+rest of each list still differs.
 
 ### Reading this
 
-<!-- Low overlap and clear opposition means the plan reflects the
-     request. High overlap means the plan is boilerplate and the
-     checkpoint is showing the artist something that was not really an
-     interpretation. -->
+Overlap across seven requests is low on every sketch (0.04 to 0.17). The
+plan is not boilerplate. Calmer and chaotic are not opposites in the
+strict sense — three sketches reuse a colour or speed name — but they
+are not the same plan with the title swapped either. The checkpoint is
+showing an interpretation of the request, not a stock list.
 
 ---
 
@@ -172,7 +200,14 @@ bug or a wrong threshold, not variance.
 
 | sketch | motion expected | motion measured | colour expected | colour measured |
 |---|---|---|---|---|
-|  |  |  |  |  |
+| night sky, moving stars | subtle | 0.0300 (subtle) | blue | blue |
+| drifting particles | subtle | 0.0255 (subtle) | purple | purple |
+| pulsing circle | lively | 0.1728 (lively) | green | green |
+| rotating grid | lively | 0.1714 (lively) | cyan | cyan |
+| wave line | subtle | 0.0197 (subtle) | orange | orange |
+| scattered dots | lively | 0.0965 (lively) | pink | pink |
+
+6/6 on both. Same thresholds as IT-1.
 
 ---
 
@@ -183,9 +218,9 @@ mood cannot be measured this way, and those are often what someone most
 wants held still. The verification covers a real but narrow slice, and
 the interface says "not checked" rather than implying otherwise.
 
-**Six base sketches, all AI generated then frozen.** Frozen so runs are
-comparable, which also makes them tidier than what a real session
-produces.
+**Six base sketches, hand written then frozen.** BUILD.md needs them
+before the generator exists. Frozen so runs are comparable, which also
+makes them tidier than what a real session produces. See NOTES.md.
 
 **Twelve cases can show a large effect or none.** It cannot size a small
 one, and no statistics are claimed here beyond counting.
@@ -204,4 +239,9 @@ projects over time.
 
 ## Run details
 
-<!-- date, model version, number of calls, approximate cost -->
+8 September 2026. Model `claude-sonnet-5`. 120 apply calls, 42 plan
+calls, 6 measurement-only runs. About 23 minutes of wall clock. Raw
+trial log: `src/eval/results.json`. Re-run locally with
+`node scripts/run-eval.mjs` against `vercel dev`; the script skips
+trials already in that file. The public `/?eval=1` page reads the
+committed numbers and does not call the model.
