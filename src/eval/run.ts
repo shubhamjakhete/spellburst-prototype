@@ -1,5 +1,5 @@
 /**
- * The three-part eval from EVAL.md.
+ * The three-part eval described in the README.
  *
  * Runs in the browser: measurement needs a canvas. A Playwright script
  * drives it and writes src/eval/results.json after every trial so a crash

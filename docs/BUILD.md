@@ -230,7 +230,7 @@ error, see an error panel and not a crash.
 
 ## M10. Eval
 
-`src/eval/run.ts`. Three parts, all specified in EVAL.md.
+`src/eval/run.ts`. Three parts, all specified in the README.
 
 - **Part 1, preservation.** 12 cases, 2 conditions, 5 repetitions.
 - **Part 2, plan discrimination.** 42 plans, overlap and opposite-pair
@@ -242,7 +242,7 @@ Fix the thresholds before the first run and do not change them
 afterwards. Tuning thresholds against results is the fastest way to make
 an eval meaningless.
 
-Run it locally, paste real numbers and a run date into EVAL.md, commit
+Run it locally, paste real numbers and a run date into the README, commit
 them. Do not let deployed visitors run it.
 
 **Commit:** `eval: preservation, plan discrimination, measurement sanity`

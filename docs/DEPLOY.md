@@ -96,12 +96,12 @@ you shipped auth.
 The eval fires 24 apply calls per run. Public, that is both a cost hole
 and a long wait nobody will sit through.
 
-Run the eval locally, paste the results into `EVAL.md`, and commit it.
-Ship a plain results page that reads the committed numbers. The
+Run the eval locally, paste the results into the README, and commit
+them. Ship a plain results page that reads the committed numbers. The
 numbers load instantly and nobody pays for them.
 
 Keep the button, hidden behind the same `?k=` gate, so you can still run
-it. Note in `EVAL.md` when the numbers were generated.
+it. Note in the README when the numbers were generated.
 
 ## Cold starts
 
@@ -136,7 +136,7 @@ screen within about fifteen seconds.
 - [x] A sketch is on screen at page load
 - [x] Example refinement buttons work
 - [x] The plan screen renders and items can be unchecked and moved
-- [x] `EVAL.md` has real committed numbers and a run date
+- [x] README has real committed evaluation numbers and a run date
 - [x] README matches what actually shipped
 
 ## Time

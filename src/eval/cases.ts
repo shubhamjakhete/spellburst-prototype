@@ -11,7 +11,7 @@ export type EvalCase = {
 }
 
 /**
- * The twelve cases from EVAL.md, written down before any run.
+ * The twelve cases from the README, written down before any run.
  * Thresholds live in verify.ts and are not changed against these results.
  */
 export const EVAL_CASES: EvalCase[] = [
