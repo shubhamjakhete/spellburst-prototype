@@ -27,6 +27,46 @@ that wrote the repository.
 
 ---
 
+## Time
+
+All times are Pacific (UTC−7) on **8 September 2026**. They come from
+the Cursor session and from `git log`. They are wall clock, not a
+claim about focused hours.
+
+The implementation session started at **12:11**. The first commit, a
+deployed skeleton, landed at **12:14**. The eval landed at **15:07**.
+The writeup landed at **17:04**.
+
+| | Clock | Elapsed from 12:11 |
+|---|---|---|
+| Session start | 12:11 | — |
+| M0 deployed (`1017181`) | 12:14 | 3 min |
+| Eval committed (`660ad89`) | 15:07 | **2 h 56 min** |
+| Docs committed (`767dc75`) | 17:04 | **4 h 53 min** |
+
+A working, measured prototype — generate, checkpoint, apply, verify,
+eval — was on `main` in just under three hours. The remaining time
+was the README and this folder.
+
+| Commit | Time | Module |
+|---|---|---|
+| `1017181` | 12:14 | M0 skeleton, deployed |
+| `381b081` | 13:06 | M1 sketch runner |
+| `92f54f2` | 13:12 | M2 measure |
+| `bf9f1bb` | 13:20 | IT-1 base sketches 6/6 |
+| `255ef54` | 13:33 | M3 generate |
+| `ecead81` | 13:41 | M4 plan |
+| `e9cb8ef` | 13:44 | M5 checkpoint |
+| `bbc24ea` | 13:51 | M6 apply |
+| `e2736b4` | 14:04 | M7 verify |
+| `8ee04a3` | 14:16 | M8 before/after, revert |
+| `abca795` | 14:18 | IT-2 demo path deployed |
+| `b9a532a` | 14:29 | M9 Monaco |
+| `660ad89` | 15:07 | M10 eval |
+| `767dc75` | 17:04 | README and `docs/` |
+
+---
+
 ## What I specified
 
 I wrote the claims, the hard rules, and the build order before the
